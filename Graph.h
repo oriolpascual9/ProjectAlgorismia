@@ -21,6 +21,9 @@ struct nodeLG {
     bool actiu;
     /**ids dels nodes adjacents al node.*/
     set<int> adjacencies;
+    
+    float x;
+    float y;
 };
 
 class Graph {
@@ -65,9 +68,8 @@ public:
 
 	/**
 	 * Crea un Graph aleatori donat un nombre de vèrtexs seguint el model Random Geometric
-	 * R pertany (0,(nV*nV/2)
 	 * @param nV	Nombre de vèrtexs que tindrà el Graph
-	 * @param R		Distància màxima perquè hi hagi aresta entre dos vèrtexs
+	 * @param R		Distància màxima perquè hi hagi aresta entre dos vèrtexs pertany a [0,1)
 	 * @return 		Graph aleatori amb nV vèrtexs generat segons Random Geomtric Graph
 	 */
     static Graph generateRGGraph(int nV, int R);
@@ -84,6 +86,8 @@ public:
      * @param id    id qdel vèrtex que es vol eliminar.
      */
     void removeVertex(int id);
+    
+    void setCoord(int id, int x, int y);
 
     /**
      * Afegeix una aresta entre els vèrtexs amb les ids donades si aquests existeixen i no existeix ya una entre ells.

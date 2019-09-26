@@ -12,6 +12,8 @@ Graph::Graph(int maxId) {
     nV = 0;
     nA = 0;
     nodeLG n;
+    x = 0;
+    y = 0;
     n.actiu = false;
     n.adjacencies = set<int>();
     nodes = vector<nodeLG>(maxId + 1, n);
@@ -44,9 +46,24 @@ Graph Graph::generateERGraph(int nV, int M) {
 
 Graph Graph::generateRGGraph(int nV, int R){
 	Graph lG = generateActivatedGraph(nV);
-	for (int i = 0; i < R; i++){
-		
+	for (int i = 0; i < nV; i++){
+		float x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
+		float y = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
+		lG.setCoord(i,x,y);
 	}	
+	for (int i = 0; i < nV; i++){
+		for (int j = 0; j < nV; j++){
+			if (j!=i){
+				if (distance(i,j) < R not lG.adjacent(i,j))
+					lG.addAresta(id1, id2);
+			}
+		}
+	}
+}
+
+void Graph::setCoord(int id, float x, float y){
+	this.x = x;
+	this.y = y;
 }
 
 void Graph::addVertex(int id) {

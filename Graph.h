@@ -63,6 +63,14 @@ public:
      */
     static Graph generateERGraph(int nV, int M);
 
+	/**
+	 * Crea un Graph aleatori donat un nombre de vèrtexs seguint el model Random Geometric
+	 * R pertany (0,(nV*nV/2)
+	 * @param nV	Nombre de vèrtexs que tindrà el Graph
+	 * @param R		Distància màxima perquè hi hagi aresta entre dos vèrtexs
+	 * @return 		Graph aleatori amb nV vèrtexs generat segons Random Geomtric Graph
+	 */
+    static Graph generateRGGraph(int nV, int R);
     /**MODIFICADORES*/
 
     /**

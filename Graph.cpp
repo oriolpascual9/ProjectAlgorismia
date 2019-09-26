@@ -42,6 +42,13 @@ Graph Graph::generateERGraph(int nV, int M) {
     return lG;
 }
 
+Graph Graph::generateRGGraph(int nV, int R){
+	Graph lG = generateActivatedGraph(nV);
+	for (int i = 0; i < R; i++){
+		
+	}	
+}
+
 void Graph::addVertex(int id) {
     if (id > maxId)
         cout << "La id " << id << " és més alta que maxId." << endl;

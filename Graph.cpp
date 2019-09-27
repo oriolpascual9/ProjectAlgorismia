@@ -12,8 +12,8 @@ Graph::Graph(int maxId) {
     nV = 0;
     nA = 0;
     nodeLG n;
-    x = 0;
-    y = 0;
+    n.x = 0;
+    n.y = 0;
     n.actiu = false;
     n.adjacencies = set<int>();
     nodes = vector<nodeLG>(maxId + 1, n);
@@ -44,7 +44,7 @@ Graph Graph::generateERGraph(int nV, int M) {
     return lG;
 }
 
-Graph Graph::generateRGGraph(int nV, int R){
+Graph Graph::generateRGGraph(int nV, float R){
 	Graph lG = generateActivatedGraph(nV);
 	for (int i = 0; i < nV; i++){
 		float x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
@@ -54,16 +54,32 @@ Graph Graph::generateRGGraph(int nV, int R){
 	for (int i = 0; i < nV; i++){
 		for (int j = 0; j < nV; j++){
 			if (j!=i){
-				if (distance(i,j) < R not lG.adjacent(i,j))
-					lG.addAresta(id1, id2);
+				if (lG.distance(i,j) < R and not lG.adjacent(i,j))
+					lG.addAresta(i, j);
 			}
 		}
 	}
 }
 
+float Graph::distance(int id1, int id2){
+    pair<float,float> coords1 = getCoords(id1);
+    pair<float,float> coords2 = getCoords(id2);
+    if (coords1.first == -1 and coords1.second == -1 or coords2.first == -1 and coords2.second == -1) return 100;
+    else {
+        float x = coords1.first - coords2.first; //calculating number to square in next step
+        float y = coords1.second - coords2.second;
+        float dist;
+
+        dist = pow(x, 2) + pow(y, 2);       //calculating Euclidean distance
+        dist = sqrt(dist);                  
+
+        return dist;
+    }
+}
+
 void Graph::setCoord(int id, float x, float y){
-	this.x = x;
-	this.y = y;
+	nodes[id].x = x;
+	nodes[id].y = y;
 }
 
 void Graph::addVertex(int id) {
@@ -245,4 +261,13 @@ bool Graph::adjacent(int id1, int id2) {
         return nodes[id1].adjacencies.find(id2) != nodes[id1].adjacencies.end();
     else
         return nodes[id2].adjacencies.find(id1) != nodes[id2].adjacencies.end();
+}
+
+pair<float,float> Graph::getCoords(int id){
+    pair<float,float> coords = pair<float,float>(-1.0,-1.0);
+    if (isActive(id)){
+        coords.first = nodes[id].x;
+        coords.second = nodes[id].y;
+    }
+    return coords;
 }

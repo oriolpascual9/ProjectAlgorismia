@@ -48,6 +48,8 @@ private:
      */
     static Graph generateActivatedGraph(int nV);
 
+    float distance(int id1, int id2);
+
 public:
 
     /**Constructores*/
@@ -72,7 +74,7 @@ public:
 	 * @param R		Distància màxima perquè hi hagi aresta entre dos vèrtexs pertany a [0,1)
 	 * @return 		Graph aleatori amb nV vèrtexs generat segons Random Geomtric Graph
 	 */
-    static Graph generateRGGraph(int nV, int R);
+    static Graph generateRGGraph(int nV, float R);
     /**MODIFICADORES*/
 
     /**
@@ -87,7 +89,7 @@ public:
      */
     void removeVertex(int id);
     
-    void setCoord(int id, int x, int y);
+    void setCoord(int id, float x, float y);
 
     /**
      * Afegeix una aresta entre els vèrtexs amb les ids donades si aquests existeixen i no existeix ya una entre ells.
@@ -175,6 +177,8 @@ public:
      * @return      true si els vètexs són adjacents, false altrament.
      */
     bool adjacent(int id1, int id2);
+
+    pair<float,float> getCoords(int id);
 };
 
 #endif

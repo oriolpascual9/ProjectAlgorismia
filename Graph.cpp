@@ -30,7 +30,7 @@ Graph Graph::generateActivatedGraph(int nV) {
     lG.nodes = vector<nodeLG>(nV, n);
     return lG;
 }
-
+/*
 Graph Graph::generateERGraph(int nV, int M) {
     Graph lG = generateActivatedGraph(nV);
     for (int i = 0; i < M; ++i) {
@@ -76,6 +76,7 @@ float Graph::distance(int id1, int id2){
         return dist;
     }
 }
+*/
 
 void Graph::setCoord(int id, float x, float y){
 	nodes[id].x = x;

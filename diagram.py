@@ -3,15 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 f = open('data.txt')
-data = []
+probability = []
+ncc = []
 for line in f:
     q = line.split()
-    a = float(q[0])
-    b = int(q[1])
-    data.append((b, a))
+    probability.append(float(q[0]));
+    ncc.append(int(q[1]));
 f.close
 
-plt.plot(data)
+plt.plot(probability, ncc)
+
+plt.xlabel('Probability')
+
+plt.ylabel('Number CC')
 
 plt.show()
 

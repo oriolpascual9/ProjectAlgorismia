@@ -16,7 +16,7 @@
 
 int main(int argc, const char * argv[]) {
 
-    if (argc != 2) {
+    if (argc != 3) {
         std::cout << "Usage: ./main.exe RGG/BRG nr" << std::endl;
         return 1;
     }

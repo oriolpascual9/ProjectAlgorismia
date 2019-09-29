@@ -16,39 +16,22 @@
 
 int main(int argc, const char * argv[]) {
 
-    string Ex = argv[1];
-    string Gr = argv[2];
-    int n = stoi(argv[3]);
+    string Gr = argv[1];
+    int n = stoi(argv[2]);
         
     MyGraph G;
     std::ofstream fout("data.txt");
 
-    if (Ex == "CCs") {
-        if (Gr == "RGG") {
-            for (int i = 0; i < 1000; ++i) {
-                G = Generator::random_geometric_graph(n, i/1000.0);
-                fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
-            }
-        }
-        if (Gr == "BRG") {
-            for (int i = 0; i < 1000; ++i) {
-                G = Generator::binomial_random_graph(n, i/1000.0);
-                fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
-            }
+    if (Gr == "RGG") {
+        for (int i = 0; i < 1000; ++i) {
+            G = Generator::random_geometric_graph(n, i/1000.0);
+            fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
         }
     }
-    if (Ex == "GC") {
-        if (Gr == "RGG") {
-            for (int i = 0; i < 1000; ++i) {
-                G = Generator::random_geometric_graph(n, i/1000.0);
-                fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).second << endl;
-            }
-        }
-        if (Gr == "BRG") {
-            for (int i = 0; i < 1000; ++i) {
-                G = Generator::binomial_random_graph(n, i/1000.0);
-                fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).second << endl;
-            }
+    if (Gr == "BRG") {
+        for (int i = 0; i < 1000; ++i) {
+            G = Generator::binomial_random_graph(n, i/1000.0);
+            fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
         }
     }
 

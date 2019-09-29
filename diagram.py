@@ -13,16 +13,11 @@ f.close
 
 plt.plot(probability, ncc)
 
-Ex = sys.argv[1]
-Gr = sys.argv[2]
+Gr = sys.argv[1]
 
 
-if Ex == "CCs":
-    y_label = 'Number CC'
-    g_title = 'Number of Connected Conponents' 
-else:
-    y_label = 'Dimmension of GC'
-    g_title = 'Dimmension of Giant Component' 
+y_label = 'Number CC'
+g_title = 'Number of Connected Conponents' 
 
 
 if Gr == "RGG":

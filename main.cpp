@@ -16,6 +16,10 @@
 
 int main(int argc, const char * argv[]) {
 
+    if (argc != 2) {
+        std::cout << "Usage: ./main.exe RGG/BRG nr" << std::endl;
+        return 1;
+    }
     string Gr = argv[1];
     int n = stoi(argv[2]);
         

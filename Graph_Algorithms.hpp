@@ -15,13 +15,13 @@
 typedef std::vector<bool> VB;
 
 class Graph_Algorithms {
-    
-    static void dfs(const MyGraph& G, int v, VB& visited);
-    
+
+    static int dfs(const MyGraph& G, int v, VB& visited);
+
 public:
-    
-    static int getNrConectedComponents(const MyGraph& G);
-    
+
+    static std::pair<int,int> getNrConectedComponents(const MyGraph& G);
+
 };
 
 #endif /* Graph_Algorithms_hpp */

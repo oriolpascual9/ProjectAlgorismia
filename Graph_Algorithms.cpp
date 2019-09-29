@@ -8,22 +8,24 @@
 
 #include "Graph_Algorithms.hpp"
 
-void Graph_Algorithms::dfs(const MyGraph& G, int v, VB& visited) {
+int Graph_Algorithms::dfs(const MyGraph& G, int v, VB& visited) {
+    int nc = 1;
     visited[v] = true;
     for (auto i : G.adj[v]) {
-        if (not visited[i]) dfs(G, i, visited);
+        if (not visited[i]) nc += dfs(G, i, visited);
     }
+    return nc;
 }
 
-int Graph_Algorithms::getNrConectedComponents(const MyGraph& G) {
-    int nr = 0;
+std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G) {
+    int nr = 0, nc = 0, nmax = 0;
     VB visited(G.nr_vertexs, false);
     for (int i = 0; i < G.nr_vertexs; ++i) {
         if (not visited[i]) {
             ++nr;
-            dfs(G, i, visited);
+            nc = dfs(G, i, visited);
         }
+        nmax = (nc>nmax)?nc:nmax;
     }
-    return nr;
+    return std::make_pair(nr,nmax) ;
 }
-

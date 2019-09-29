@@ -1,7 +1,8 @@
 #!/bin/bash
-if [ ! -e main.exe ];
+if [ $# -eq 0 ];
 then
-    make
+    echo "\nUsage: sh Experimento.sh RGG/BRG nr_nodes\n"
+else
+    ./main.exe $1 $2
+    python3 diagram.py $1
 fi
-./main.exe $1 $2
-python3 diagram.py $1

@@ -43,7 +43,7 @@ private:
 
     /**
      * Genera un Graph amb n vertexs (tots activats) i cap aresta.
-     * @param n Nombre de vèrtexs del Graph.
+     * @param nV Nombre de vèrtexs del Graph.
      * @return  Graph amb n vertexs (tots activats) i cap aresta.
      */
     static Graph generateActivatedGraph(int nV);

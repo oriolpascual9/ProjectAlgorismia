@@ -1,4 +1,4 @@
-OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
+OPCIONS = -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
 main.exe: main.o Graph.o MyGraph.o Generator.o Graph_Algorithms.o
 	g++ -o main.exe main.o Graph.o MyGraph.o Generator.o Graph_Algorithms.o
@@ -7,7 +7,7 @@ Graph.o: Graph.cpp Graph.h
 	g++ -c Graph.cpp $(OPTIONS) 
 
 MyGraph.o: MyGraph.cpp MyGraph.hpp
-	g++ -c MyGraph.cpp $(OPTIONS) 
+	g++ -c -std=c++11 MyGraph.cpp 
 
 Generator.o: Generator.cpp Generator.hpp MyGraph.hpp
 	g++ -c Generator.cpp $(OPTIONS) 

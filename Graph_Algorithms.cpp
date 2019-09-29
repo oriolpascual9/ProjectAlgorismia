@@ -26,3 +26,4 @@ int Graph_Algorithms::getNrConectedComponents(const MyGraph& G) {
     }
     return nr;
 }
+

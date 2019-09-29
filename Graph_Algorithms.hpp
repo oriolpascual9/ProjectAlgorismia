@@ -22,8 +22,6 @@ public:
     
     static int getNrConectedComponents(const MyGraph& G);
     
-    
-    
 };
 
 #endif /* Graph_Algorithms_hpp */

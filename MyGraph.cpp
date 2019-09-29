@@ -2,11 +2,22 @@
 //  MyGraph.cpp
 //  algorismia
 //
-//  Created by Miălache Andrei on 28/09/2019.
 //  Copyright © 2019 Grup 2. All rights reserved.
 //
 
 #include "MyGraph.hpp"
 
-
 MyGraph::MyGraph() : nr_vertexs(0) {}
+
+MyGraph::MyGraph(int n) {
+    nr_vertexs = n;
+    adj = std::vector< std::list<int> > (n, std::list<int>());
+}
+
+void MyGraph::list_edges() {
+    for (int i = 0; i < this->adj.size(); ++i) {
+        for (auto j : this->adj[i])
+            if (i+1 > j+1) std::cout << i+1 << ',' << j+1 << ',';
+    }
+    std::cout << std::endl;
+}

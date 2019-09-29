@@ -25,9 +25,9 @@ class Generator {
     
 public:
     
-    static MyGraph* random_geometric_graph(int n, double r);
+    static MyGraph& random_geometric_graph(int n, double r);
     
-    static MyGraph binomial_random_graph();
+    static MyGraph& binomial_random_graph(int n, double p);
     
 };
 

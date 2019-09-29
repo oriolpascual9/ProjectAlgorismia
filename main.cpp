@@ -12,15 +12,20 @@
 #include "Generator.hpp"
 #include "Graph_Algorithms.hpp"
 
-int main() {
+int main(int argc, const char * argv[]) {
     
-    MyGraph* G = Generator::random_geometric_graph(10, 0.2);
+    MyGraph G = Generator::random_geometric_graph(10, 0.2);
     
-    for (int i = 0; i < G->nr_vertexs; ++i) {
-        for (auto j : G->adj[i]) std::cout << i << ' ' << j << std::endl;
-    }
+//    G.list_edges();
     
-    std::cout << "Nr CC : " << Graph_Algorithms::getNrConectedComponents(*G) << std::endl;
+    std::cout << "Nr CC : " << Graph_Algorithms::getNrConectedComponents(G) << std::endl;
+    
+    
+    MyGraph G1 = Generator::binomial_random_graph(10, 0.3);
+    
+//     G1.list_edges();
+    
+    std::cout << "Nr CC : " << Graph_Algorithms::getNrConectedComponents(G1) << std::endl;
     
     return 0;
 }

@@ -9,6 +9,7 @@
 #define MyGraph_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include <vector>
 #include <list>
 
@@ -21,10 +22,9 @@ public:
     
     MyGraph();
     
-    MyGraph(int n) {
-        nr_vertexs = n;
-        adj = std::vector< std::list<int> > (n, std::list<int>());
-    }
+    MyGraph(int n);
+    
+    void list_edges();
 };
 
 

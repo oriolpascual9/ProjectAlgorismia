@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "Graph.h"
 #include "MyGraph.hpp"
 #include "Generator.hpp"
@@ -14,21 +15,16 @@
 
 int main(int argc, const char * argv[]) {
 
-    MyGraph G = Generator::random_geometric_graph(10, 0.2);
+    int n;
+    std::cin >> n;
 
-//    G.list_edges();
-
-    std::cout << "Nr CC : " << Graph_Algorithms::getNrConectedComponents(G).first << " ; "
-              << "Max size : " << Graph_Algorithms::getNrConectedComponents(G).second << std::endl;
-
-
-    MyGraph G1 = Generator::binomial_random_graph(10, 0.3);
-
-//     G1.list_edges();
-
-    std::cout << "Nr CC : " << Graph_Algorithms::getNrConectedComponents(G1).first << " ; "
-              << "Max size : " << Graph_Algorithms::getNrConectedComponents(G1).second << std::endl;
-
+    MyGraph G;
+    std::ofstream fout("data.txt");
+    for (int i = 0; i < 1000; ++i) {
+        G = Generator::random_geometric_graph(n, i/1000.0);
+        fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
+    }
 
     return 0;
 }
+

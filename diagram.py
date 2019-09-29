@@ -13,9 +13,12 @@ f.close
 
 plt.plot(probability, ncc)
 
-plt.xlabel('Probability')
+# plt.plot([0.0, 1], [1.0, 1], 'red', lw=0.7)
+
+plt.xlabel('Radius r')
 
 plt.ylabel('Number CC')
 
-plt.show()
+plt.title('Number of Connected Conponents of a Random Geometric Graph')
 
+plt.show()

@@ -10,7 +10,7 @@ MyGraph.o: MyGraph.cpp MyGraph.hpp
 	g++ -c -std=c++11 MyGraph.cpp 
 
 Generator.o: Generator.cpp Generator.hpp MyGraph.hpp
-	g++ -c Generator.cpp $(OPTIONS) 
+	g++ -c -std=gnu++11 Generator.cpp $(OPTIONS) 
 
 Graph_Algorithms.o: Graph_Algorithms.cpp Graph_Algorithms.hpp MyGraph.hpp
 	g++ -std=c++11 -c Graph_Algorithms.cpp $(OPTIONS) 

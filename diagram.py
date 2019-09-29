@@ -1,4 +1,4 @@
-import networkx as nx
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -13,12 +13,27 @@ f.close
 
 plt.plot(probability, ncc)
 
-# plt.plot([0.0, 1], [1.0, 1], 'red', lw=0.7)
+Ex = sys.argv[1]
+Gr = sys.argv[2]
 
-plt.xlabel('Radius r')
 
-plt.ylabel('Number CC')
+if Ex == "CCs":
+    y_label = 'Number CC'
+    g_title = 'Number of Connected Conponents' 
+else:
+    y_label = 'Dimmension of GC'
+    g_title = 'Dimmension of Giant Component' 
 
-plt.title('Number of Connected Conponents of a Random Geometric Graph')
+
+if Gr == "RGG":
+    x_label = 'Radius r'
+else:
+    x_label = 'Probability p'
+
+plt.xlabel(x_label)
+
+plt.ylabel(y_label)
+
+plt.title(g_title)
 
 plt.show()

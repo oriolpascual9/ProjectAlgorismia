@@ -20,8 +20,10 @@ int main(int argc, const char * argv[]) {
 
     MyGraph G;
     std::ofstream fout("data.txt");
+
     for (int i = 0; i < 1000; ++i) {
         G = Generator::random_geometric_graph(n, i/1000.0);
+        // G = Generator::binomial_random_graph(n, i/1000.0);
         fout << i/1000.0 << '\t' << Graph_Algorithms::getNrConectedComponents(G).first << endl;
     }
 

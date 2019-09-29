@@ -21,13 +21,13 @@ class Generator {
     
     static double euclidean_distance(Point x, Point y);
     
-    static std::vector<Point>* get_uni_dist_points(int n);
+    static std::vector<Point> get_uni_dist_points(int n);
     
 public:
     
-    static MyGraph& random_geometric_graph(int n, double r);
+    static MyGraph random_geometric_graph(int n, double r);
     
-    static MyGraph& binomial_random_graph(int n, double p);
+    static MyGraph binomial_random_graph(int n, double p);
     
 };
 

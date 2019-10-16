@@ -8,16 +8,17 @@
 
 #include <iostream>
 #include <fstream>
-#include <string.h>
-#include "Graph.h"
+#include <string>
 #include "MyGraph.hpp"
 #include "Generator.hpp"
 #include "Graph_Algorithms.hpp"
 
+using namespace std;
+
 int main(int argc, const char * argv[]) {
 
     if (argc < 3) {
-        std::cout << "Usage: ./main.exe RGG/BRG nr" << std::endl;
+        cout << "Usage: ./main.exe RGG/BRG nr" << std::endl;
         return 1;
     }
     string Gr = argv[1];
@@ -26,7 +27,7 @@ int main(int argc, const char * argv[]) {
     if (argc == 4) f = stof(argv[3]);
         
     MyGraph G;
-    std::ofstream fout("data.txt");
+    ofstream fout("data.txt");
 
     if (Gr == "RGG") {
         for (int i = 0; i < 1000; ++i) {

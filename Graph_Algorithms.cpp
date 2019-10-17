@@ -8,6 +8,8 @@
 
 #include "Graph_Algorithms.hpp"
 
+Graph_Algorithms::Graph_Algorithms() : elapsed_secs(0){}
+
 int Graph_Algorithms::dfs(const MyGraph& G, int v, VB& visited) {
     int nc = 1;
     visited[v] = true;
@@ -17,7 +19,8 @@ int Graph_Algorithms::dfs(const MyGraph& G, int v, VB& visited) {
     return nc;
 }
 
-std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G) {
+std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G, double& timing) {
+    unsigned t0 = clock();
     int nr = 0, nc = 0, nmax = 0;
     VB visited(G.nr_vertexs, false);
     for (int i = 0; i < G.nr_vertexs; ++i) {
@@ -27,5 +30,7 @@ std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G) {
         }
         nmax = (nc>nmax)?nc:nmax;
     }
+    unsigned t1 = clock();
+    timing = double(t1 - t0) / CLOCKS_PER_SEC;
     return std::make_pair(nr,nmax) ;
 }

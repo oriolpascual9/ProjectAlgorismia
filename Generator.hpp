@@ -28,7 +28,8 @@ public:
     static MyGraph random_geometric_graph(int n, double r);
     
     static MyGraph binomial_random_graph(int n, double p);
-    
+
+	static MyGraph barabasi_graph(int n, int m);    
 };
 
 #endif /* Generator_hpp */

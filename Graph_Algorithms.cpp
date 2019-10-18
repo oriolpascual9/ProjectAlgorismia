@@ -34,3 +34,29 @@ std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G, d
     timing = double(t1 - t0) / CLOCKS_PER_SEC;
     return std::make_pair(nr,nmax) ;
 }
+
+bool Graph_Algorithms::isAcyclic(const MyGraph& G){
+    MyGraph graph = G;
+    int n = graph.getVertexs(); 
+    double timing = 0.0;
+    if (n == 0) return true;
+    else if (noLeafs(graph) && getNrConectedComponents(graph,timing).first > 1) return false;
+    else{
+        for (int i = 0; i < n; ++i){
+            std::list<int> leaf = graph.getAdjacencies(i);
+            if (leaf.size() == 1) {
+                int adj = leaf.front();
+                graph.removeAdj(i,adj);
+                return isAcyclic(graph);
+            }
+        }
+    }
+}
+
+bool Graph_Algorithms::noLeafs(const MyGraph& G){
+    MyGraph graph = G; 
+    for (int i = 0; i < graph.getVertexs(); ++i){
+        if (graph.getAdjacencies(i).size() == 1) return true;
+    }
+    return false;
+}

@@ -25,6 +25,12 @@ public:
     MyGraph(int n);
     
     void list_edges();
+
+    std::list<int> getAdjacencies(int vertex);
+
+    int getVertexs();
+
+    void removeAdj(int v1, int v2);
 };
 
 

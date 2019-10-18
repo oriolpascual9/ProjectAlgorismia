@@ -21,3 +21,16 @@ void MyGraph::list_edges() {
     }
     std::cout << std::endl;
 }
+
+int MyGraph::getVertexs() {
+	return nr_vertexs;
+}
+
+std::list<int> MyGraph::getAdjacencies(int vertex){
+	return adj[vertex];
+}
+
+void MyGraph::removeAdj(int v1, int v2){
+	adj[v1].remove(v2);
+	adj[v2].remove(v1);
+}

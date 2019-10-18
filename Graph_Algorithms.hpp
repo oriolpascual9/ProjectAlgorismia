@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <ctime>
+#include <list>
 #include "MyGraph.hpp"
 
 typedef std::vector<bool> VB;
@@ -19,10 +20,12 @@ class Graph_Algorithms {
 
 	double elapsed_secs;
     static int dfs(const MyGraph& G, int v, VB& visited);
+    static bool noLeafs(const MyGraph& G);
 
 public:
 	Graph_Algorithms();
     static std::pair<int,int> getNrConectedComponents(const MyGraph& G, double& timing);
+    bool isAcyclic(const MyGraph& G);
 
 };
 

@@ -62,5 +62,5 @@ MyGraph Generator::binomial_random_graph(int n, double p) {
 }
 
 MyGraph Generator::barabasi_graph(int n, int m){
-	
+	return MyGraph();
 }

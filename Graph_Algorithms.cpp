@@ -20,19 +20,27 @@ int Graph_Algorithms::dfs(const MyGraph& G, int v, VB& visited) {
 }
 
 std::pair<int,int> Graph_Algorithms::getNrConectedComponents(const MyGraph& G, double& timing) {
-    unsigned t0 = clock();
+    unsigned long t0 = clock();
     int nr = 0, nc = 0, nmax = 0;
-    VB visited(G.nr_vertexs, false);
-    for (int i = 0; i < G.nr_vertexs; ++i) {
+    VB visited(G.adj.size(), false);
+    for (int i = 0; i < G.adj.size(); ++i) {
         if (not visited[i]) {
             ++nr;
             nc = dfs(G, i, visited);
         }
         nmax = (nc>nmax)?nc:nmax;
     }
-    unsigned t1 = clock();
+    unsigned long t1 = clock();
     timing = double(t1 - t0) / CLOCKS_PER_SEC;
-    return std::make_pair(nr,nmax) ;
+    return std::make_pair(nr,nmax);
+}
+
+bool Graph_Algorithms::isConnex(const MyGraph& G) {
+    VB visited(G.adj.size(), false);
+    dfs(G, 0, visited);
+    for (int i = 0; i < G.adj.size(); ++i)
+        if (!visited[i]) return false;
+    return true;
 }
 
 bool Graph_Algorithms::isAcyclic(const MyGraph& G){
@@ -41,7 +49,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
     double timing = 0.0;
     if (n == 0) return true;
     else if (noLeafs(graph) && getNrConectedComponents(graph,timing).first > 1) return false;
-    else{
+    else {
         for (int i = 0; i < n; ++i){
             std::list<int> leaf = graph.getAdjacencies(i);
             if (leaf.size() == 1) {
@@ -50,6 +58,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
                 return isAcyclic(graph);
             }
         }
+        return false; // Control may reach end of non-void function ??? Cal comprovar
     }
 }
 

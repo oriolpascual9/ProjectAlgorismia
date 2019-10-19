@@ -25,7 +25,8 @@ class Graph_Algorithms {
 public:
 	Graph_Algorithms();
     static std::pair<int,int> getNrConectedComponents(const MyGraph& G, double& timing);
-    bool isAcyclic(const MyGraph& G);
+    static bool isConnex(const MyGraph& G);
+    static bool isAcyclic(const MyGraph& G);
 
 };
 

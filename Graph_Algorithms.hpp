@@ -27,6 +27,8 @@ public:
     static std::pair<int,int> getNrConectedComponents(const MyGraph& G, double& timing);
     static bool isConnex(const MyGraph& G);
     static bool isAcyclic(const MyGraph& G);
+    static bool isHamiltonian(const MyGraph& G);
+    static bool isHamiltonianFaster(const MyGraph& G);
 
 };
 

@@ -80,7 +80,7 @@ int main(int argc, const char * argv[]) {
             for (int j = 0; j < 100; ++j) {
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
                 else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                else G = Generator::barabasi_graph(n, n-1); // TODO: Change it
                 
                 int n = Graph_Algorithms::getNrConectedComponents(G,time).second;
                 if (nmin > n) nmin = n;
@@ -88,6 +88,21 @@ int main(int argc, const char * argv[]) {
                 sum += n;
             }
             fout << f*i/1000.0 << '\t' << (int)(sum-nmax-nmin)/98 << endl;
+        }
+    }
+    if (propriedad == "CH") {
+        for (int i = 0; i < 1000; ++i) {
+            int x = 0;
+            int y = 0;
+            for (int j = 0; j < 100; ++j){
+                if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
+                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
+                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                
+                if (Graph_Algorithms::isHamiltonian(G)) ++x;
+                else ++y;
+            }
+            fout << f*i/1000.0 << '\t' << (double)x/(x+y) << endl;
         }
     }
     return 0;

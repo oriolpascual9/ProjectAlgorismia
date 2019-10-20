@@ -58,7 +58,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
                 return isAcyclic(graph);
             }
         }
-        return false; // Control may reach end of non-void function ??? Cal comprovar
+        return false;
     }
 }
 

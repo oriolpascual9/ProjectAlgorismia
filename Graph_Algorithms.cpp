@@ -5,7 +5,7 @@
 //  Created by Grup 2.
 //  Copyright © 2019 Grup 2. All rights reserved.
 //
-
+#include <algorithm>
 #include "Graph_Algorithms.hpp"
 
 Graph_Algorithms::Graph_Algorithms() : elapsed_secs(0){}
@@ -45,7 +45,7 @@ bool Graph_Algorithms::isConnex(const MyGraph& G) {
 
 bool Graph_Algorithms::isAcyclic(const MyGraph& G){
     MyGraph graph = G;
-    int n = graph.getVertexs(); 
+    int n = graph.getVertexs();
     double timing = 0.0;
     if (n == 0) return true;
     else if (noLeafs(graph) && getNrConectedComponents(graph,timing).first > 1) return false;
@@ -63,7 +63,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
 }
 
 bool Graph_Algorithms::noLeafs(const MyGraph& G){
-    MyGraph graph = G; 
+    MyGraph graph = G;
     for (int i = 0; i < graph.getVertexs(); ++i){
         if (graph.getAdjacencies(i).size() == 1) return true;
     }
@@ -85,7 +85,7 @@ bool Graph_Algorithms::isHamiltonian(const MyGraph &G) {
             if(!adj[v[i]][v[i+1]]) valid = false;
         if(valid) return true;
     } while(next_permutation(v.begin(), v.end()));
-    
+
     return false;
 }
 

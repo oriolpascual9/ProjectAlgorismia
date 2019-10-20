@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string>
 
 double Generator::euclidean_distance(Point a, Point b) {
     return sqrt(pow(a.first - b.first, 2.0) + (pow(a.second - b.second, 2.0)));
@@ -72,7 +73,7 @@ MyGraph Generator::barabasi_graph(int n, int m) {
     if (pid == -1) std::cout << "Error Fork\n";
     if (pid == 0) {
 //        std::cout << "Hijo \n";
-        execlp("python3", "python3", "barabasi.py", NULL);
+        execlp("python3", "python3", "barabasi.py", std::to_string(n).c_str(), std::to_string(m).c_str(), NULL);
     }
     else {
 //        std::cout << "padre\n";

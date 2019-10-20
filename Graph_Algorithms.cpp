@@ -46,7 +46,7 @@ bool Graph_Algorithms::isConnex(const MyGraph& G) {
 bool Graph_Algorithms::isAcyclic(const MyGraph& G){
     MyGraph graph = G;
     int n = graph.getVertexs();
-    double timing = 0.0;
+    // double timing = 0.0;
     if (noEdges(graph)) return true;
     else if (noLeafs(graph)) return false;
     else{

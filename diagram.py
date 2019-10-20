@@ -13,14 +13,14 @@ for line in f:
     probability.append(float(q[0]));
     if propriedad in ["Conexo", "Aciclico", "CH"]:
         ncc.append(float(q[1]));
-    if propriedad in ["CC", "CG"]:
+    if propriedad in ["CC", "CG" ,"DM"]:
         ncc.append(int(q[1]));
 f.close
 
 dx = {
     "RGG": "Radius r",
     "BRG": "Probability p",
-    "BAG": "Some n :D" # TODO: Change
+    "BAG": "Número de aristas a conectar desde un nuevo nodo a los nodos existentes"
 }
 
 dy = {
@@ -28,6 +28,7 @@ dy = {
     "CC": "Numero de componentes conexas",
     "CG": "Dimension de la componente gigante",
     "CH": "Probabilidad de que tiene un camino hamiltoniano",
+    "DM": "Diametro del Grafo",
     "Aciclico": "Probabilidad de que el grapho es aciclico"
 }
 

@@ -47,8 +47,7 @@ int main(int argc, const char * argv[]) {
             int nmax = -INF, nmin = 0;
             for (int j = 0; j < 100; ++j) {
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                if (tipo_grafo == "BRG") G = Generator::binomial_random_graph(n, f*i/1000.0);
                 
                 int n = Graph_Algorithms::getNrConectedComponents(G,time).first;
                 if (nmin > n) nmin = n;
@@ -64,8 +63,7 @@ int main(int argc, const char * argv[]) {
             int y = 0;
             for (int j = 0; j < 100; ++j){
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                if (tipo_grafo == "BRG") G = Generator::binomial_random_graph(n, f*i/1000.0);
                 
                 if (Graph_Algorithms::isConnex(G)) ++x;
                 else ++y;
@@ -79,8 +77,7 @@ int main(int argc, const char * argv[]) {
             int nmax = -INF, nmin = 0;
             for (int j = 0; j < 100; ++j) {
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else G = Generator::barabasi_graph(n, n-1); // TODO: Change it
+                if (tipo_grafo == "BRG") G = Generator::binomial_random_graph(n, f*i/1000.0);
                 
                 int n = Graph_Algorithms::getNrConectedComponents(G,time).second;
                 if (nmin > n) nmin = n;
@@ -96,10 +93,9 @@ int main(int argc, const char * argv[]) {
             int y = 0;
             for (int j = 0; j < 50; ++j){
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/500.0);
-                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/500.0);
-                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                if (tipo_grafo == "BRG") G = Generator::binomial_random_graph(n, f*i/500.0);
                 
-                if (Graph_Algorithms::isConnex(G) && Graph_Algorithms::isHamiltonianFaster(G)) ++x;
+                if (Graph_Algorithms::isConnex(G) && Graph_Algorithms::isHamiltonian(G)) ++x;
                 else ++y;
             }
             fout << f*i/500.0 << '\t' << (double)x/(x+y) << endl;
@@ -111,8 +107,7 @@ int main(int argc, const char * argv[]) {
             int y = 0;
             for (int j = 0; j < 100; ++j){
                 if (tipo_grafo == "RGG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
-                else G = Generator::barabasi_graph(10, 9); // TODO: Change it
+                if (tipo_grafo == "BRG") G = Generator::binomial_random_graph(n, f*i/1000.0);
                 
                 if (Graph_Algorithms::isAcyclic(G)) ++x;
                 else ++y;

@@ -37,7 +37,6 @@ public:
     
     static bool isHamiltonian(const MyGraph& G);
     
-    static bool isHamiltonianFaster(const MyGraph& G);
 
 };
 

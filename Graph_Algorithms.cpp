@@ -94,27 +94,3 @@ bool Graph_Algorithms::isHamiltonian(const MyGraph &G) {
 
     return false;
 }
-
-bool Graph_Algorithms::isHamiltonianFaster(const MyGraph &G) {
-    int n = (int)G.adj.size();
-    std::vector< std::vector<bool> > adj(n, std::vector<bool>(n, false));
-    for (int i = 0; i < n; ++i) {
-        for (auto j : G.adj[i])
-            adj[i][j] = adj[j][i] = true;
-    }
-    std::vector< std::vector<bool> > dp(n, std::vector<bool>((1<<n), false));
-    for (int i = 0; i < n; ++i) dp[i][(1<<i)] = true;
-    for(int i = 0; i < (1<<n); i++){
-        for(int j = 0; j < n; j++)
-            if(i & (1<<j)){
-                for(int k = 0; k < n; k++)
-                    if(i & (1<<k) && adj[k][j] && k!=j && dp[k][i^(1<<j)]) {
-                        dp[j][i]=true;
-                        break;
-                    }
-            }
-    }
-    for(int i = 0; i < n; i++)
-        if(dp[i][(1<<n)-1]) return true;
-    return false;
-}

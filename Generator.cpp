@@ -8,7 +8,12 @@
 
 #include "Generator.hpp"
 #include <iostream>
-
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 double Generator::euclidean_distance(Point a, Point b) {
     return sqrt(pow(a.first - b.first, 2.0) + (pow(a.second - b.second, 2.0)));
@@ -28,11 +33,11 @@ std::vector<Point> Generator::get_uni_dist_points(int n) {
 }
 
 MyGraph Generator::random_geometric_graph(int n, double r) {
-    
+
     std::vector<Point> v = get_uni_dist_points(n);
-    
+
     MyGraph G(n);
-    
+
     for (int i = 0; i < v.size(); ++i) {
         for (int j = i+1; j < v.size(); ++j) {
             if (euclidean_distance(v[i], v[j]) < r) {
@@ -61,6 +66,27 @@ MyGraph Generator::binomial_random_graph(int n, double p) {
     return G;
 }
 
-MyGraph Generator::barabasi_graph(int n, int m){
-	
+MyGraph Generator::barabasi_graph(int n, int m) {
+    pid_t pid = fork();
+
+    if (pid == -1) std::cout << "Error Fork\n";
+    if (pid == 0) {
+//        std::cout << "Hijo \n";
+        execlp("python3", "python3", "barabasi.py", NULL);
+    }
+    else {
+//        std::cout << "padre\n";
+        waitpid(-1,NULL,0);
+        std::ifstream fin("graph.txt");
+        int n;
+        fin >> n;
+        MyGraph G(n);
+        int x, y;
+        while (fin >> x >> y) {
+            G.adj[x].push_back(y);
+            G.adj[y].push_back(x);
+        }
+        return G;
+    }
+	return MyGraph();
 }

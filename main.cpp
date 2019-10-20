@@ -99,7 +99,7 @@ int main(int argc, const char * argv[]) {
                 else if (tipo_grafo == "BRG") G = Generator::random_geometric_graph(n, f*i/1000.0);
                 else G = Generator::barabasi_graph(10, 9); // TODO: Change it
                 
-                if (Graph_Algorithms::isHamiltonian(G)) ++x;
+                if (Graph_Algorithms::isConnex(G) && Graph_Algorithms::isHamiltonian(G)) ++x;
                 else ++y;
             }
             fout << f*i/1000.0 << '\t' << (double)x/(x+y) << endl;

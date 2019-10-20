@@ -47,7 +47,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
     MyGraph graph = G;
     int n = graph.getVertexs();
     double timing = 0.0;
-    if (n == 0) return true;
+    if (noEdges(graph)) return true;
     else if (noLeafs(graph)) return false;
     else{
         for (int i = 0; i < n; ++i){
@@ -60,6 +60,13 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
         }
         return false; // Control may reach end of non-void function ??? Cal comprovar
     }
+}
+
+bool Graph_Algorithms::noEdges(const MyGraph& G){
+    MyGraph graph = G; 
+    for (int i = 0; i < graph.getVertexs(); ++i)
+        if (graph.getAdjacencies(i).size() != 0) return false;
+    return true;
 }
 
 bool Graph_Algorithms::noLeafs(const MyGraph& G){

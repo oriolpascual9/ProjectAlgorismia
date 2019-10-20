@@ -21,6 +21,7 @@ class Graph_Algorithms {
 	double elapsed_secs;
     static int dfs(const MyGraph& G, int v, VB& visited);
     static bool noLeafs(const MyGraph& G);
+    static bool noEdges(const MyGraph& G);
 
 public:
 	Graph_Algorithms();

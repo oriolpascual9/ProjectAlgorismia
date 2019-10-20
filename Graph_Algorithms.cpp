@@ -40,7 +40,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
     int n = graph.getVertexs(); 
     double timing = 0.0;
     if (n == 0) return true;
-    else if (noLeafs(graph) && getNrConectedComponents(graph,timing).first > 1) return false;
+    else if (noLeafs(graph)) return false;
     else{
         for (int i = 0; i < n; ++i){
             std::list<int> leaf = graph.getAdjacencies(i);
@@ -55,8 +55,7 @@ bool Graph_Algorithms::isAcyclic(const MyGraph& G){
 
 bool Graph_Algorithms::noLeafs(const MyGraph& G){
     MyGraph graph = G; 
-    for (int i = 0; i < graph.getVertexs(); ++i){
-        if (graph.getAdjacencies(i).size() == 1) return true;
-    }
-    return false;
+    for (int i = 0; i < graph.getVertexs(); ++i)
+        if (graph.getAdjacencies(i).size() == 1) return false;
+    return true;
 }

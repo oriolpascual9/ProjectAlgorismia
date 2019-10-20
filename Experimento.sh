@@ -7,6 +7,7 @@ Propriedad:\n\
     CG       - Dimension Componente Gigante\n\
     Conexo   - Conexidad del Grafo\n\
     Aciclico - Propredad de ser Aciclico\n\
+    CH       - Tener Camino Hamiltoniano
 Tipo de grafo:\n\
     RGG      - Random Geometric Graph\n\
     BRG      - Binomial Random Graph\n\

@@ -11,7 +11,7 @@ ncc = []
 for line in f:
     q = line.split()
     probability.append(float(q[0]));
-    if propriedad in ["Conexo", "Aciclico", "Hamiltonian"]:
+    if propriedad in ["Conexo", "Aciclico", "CH"]:
         ncc.append(float(q[1]));
     if propriedad in ["CC", "CG"]:
         ncc.append(int(q[1]));
@@ -27,6 +27,7 @@ dy = {
     "Conexo": "Probabilidad de que el grafo es conexo",
     "CC": "Numero de componentes conexas",
     "CG": "Dimension de la componente gigante",
+    "CH": "Probabilidad de que tiene un camino hamiltoniano",
     "Aciclico": "Probabilidad de que el grapho es aciclico"
 }
 

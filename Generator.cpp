@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 double Generator::euclidean_distance(Point a, Point b) {
     return sqrt(pow(a.first - b.first, 2.0) + (pow(a.second - b.second, 2.0)));
@@ -67,7 +68,7 @@ MyGraph Generator::binomial_random_graph(int n, double p) {
 
 MyGraph Generator::barabasi_graph(int n, int m) {
     pid_t pid = fork();
-    
+
     if (pid == -1) std::cout << "Error Fork\n";
     if (pid == 0) {
 //        std::cout << "Hijo \n";

@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
                 "Propriedad:\n"
                 "    CC       - Numero de Componentes Conexas\n"
                 "    CG       - Dimension Componente Gigante\n"
+                "    CH       - Probabilidad de que tiene un camino hamiltoniano\n"
                 "    Conexo   - Conexidad del Grafo\n"
                 "    Aciclico - Propredad de ser Aciclico\n"
                 "Tipo de grafo:\n"
